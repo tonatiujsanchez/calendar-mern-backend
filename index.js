@@ -27,6 +27,12 @@ app.use('/api/auth', require('./routes/auth'))
 app.use('/api/events', require('./routes/events'))
 
 
+// Configuración para que mi aplicación arranque desde el index
+// y funcionen las rutas de react sin el hash(#)
+app.get('*',( req, res )=> {
+    res.sendFile(__dirname + '/public/index.html')
+})
+
 
 // Escuchar peticiones
 app.listen(process.env.PORT, ()=> {
